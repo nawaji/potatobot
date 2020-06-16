@@ -4,5 +4,6 @@ module.exports = {
 	},
 
 	help: "AYAYA",
+	usage_help: "c!ayaya",
 	hide: false
 }

@@ -20,5 +20,6 @@ module.exports = {
 	},
 
 	help: "Info about me (the bot)",
+	usage_help: "c!about",
 	hide: false
 }

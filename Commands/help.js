@@ -37,5 +37,6 @@ module.exports = {
 	},
 
 	help: "Displays a list of usable commands",
+	usage_help: "c!help, c!help [command]",
 	hide: true
 }

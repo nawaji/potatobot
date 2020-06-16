@@ -16,5 +16,6 @@ module.exports = {
 	},
 
 	help: "Displays your avatar.",
+	usage_help: "c!avatar",
 	hide: false,
 }

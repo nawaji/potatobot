@@ -5,7 +5,7 @@
 
 const fs = require("fs");
 const Discord = require("Discord.js");
-const split_args = require(__dirname + "/split_args.js");
+const split_args = require( __dirname + "/split_args.js");
 var files = fs.readdirSync(__dirname + "/../Commands/");
 
 function spec_command_help(message) {
@@ -28,8 +28,8 @@ function spec_command_help(message) {
 		var temp = require(__dirname + "/../Commands/" + new_message);
 		var embed = new Discord.MessageEmbed()
 			.setColor(9662683)
-			.setAuthor("c!" + element_name)
-			.setDescription(temp.help);
+			.setAuthor("c!" + element_name + " command usage:")
+			.setDescription(temp.usage_help);
 
 		message.channel.send({embed});
 	} else {

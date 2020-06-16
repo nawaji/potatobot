@@ -9,5 +9,6 @@ module.exports = {
 	},
 
 	help: "Roll a random number from 1 to 100.",
+	usage_help: "c!roll",
 	hide: false
 }
