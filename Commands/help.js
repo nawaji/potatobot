@@ -26,11 +26,15 @@ module.exports = {
 			return;
 		}
 
+		var author_string = [
+			"Available commands\n", bot.PREFIX, "<command> to use."
+		]
+		
 		//send the full list of help messages of each visible command
 		var embed = new Discord.MessageEmbed()
 			.setColor(9662683)
 			.setTimestamp()
-			.setAuthor("Available commands\nc!<command> to use.")
+			.setAuthor(author_string.join(""))
 			.setDescription(list.join("\n"));
 		message.channel.send({embed});
 

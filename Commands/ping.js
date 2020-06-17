@@ -16,5 +16,6 @@ module.exports = {
 		});
 	},
 	help: "Ping the bot.",
+	usage_help: "c!ping",
 	hide: false
 };

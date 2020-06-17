@@ -1,37 +1,6 @@
-//const Discord = require("Discord.js");
-const fs = require("fs"); //filesync, used for modules
-//const clearRequire = require("clear-require");
-var files = fs.readdirSync(__dirname);
-var commands = {}
-
-const prefix = "c!"; //prefix for chat commands
-
-try{
-	//parse through each name in "files"
-	for (i = 0; i < files.length; i++) {
-		//remove this file from the list to prevent potential recursion
-		if (files[i] == "findCommands.js") {
-			files.splice(i, 1);
-			i--;
-		}
-	}
-
-	//parse through each element again
-	files.forEach(element => {
-		//if the file ends with .js, then import, otherwise don't
-		if (element.endsWith(".js")) {
-			commands[element.slice(0, -3)] 
-				= require(__dirname + "/" + element);
-			console.log(element + " loaded.");
-		}
-	});
-
-} catch(err) {
-	//print error to console if found
-	console.log(err);
-}
-
 //findCommands function
+//NOTE: this function is unaffected by the loadcommands file, so any changes
+//to this file will need a bot restart to take effect.
 module.exports = {
 	main: function(bot) {
 		bot.on("message", message => {
@@ -42,15 +11,21 @@ module.exports = {
 			}
 
 			//if our command prefix is found...
-			if (String(message).startsWith(prefix)) {
+			if (String(message).startsWith(bot.PREFIX)) {
 				var cmdName = String(message).split(" ")[0].substr(2);
 
 				cmdName = cmdName.toLocaleLowerCase(); //lowercase
 
+				//if person who initiated the command is the owner
+				if (bot.COMMANDS[cmdName] && message.author.id == bot.OWNER) {
+					bot.COMMANDS[cmdName].main(bot, message);
+					return;
+				}
+
 				//if the command name exists and that command is unlocked
 				//then execute that command
-				if (commands[cmdName] && !commands[cmdName].lock) {
-					commands[cmdName].main(bot, message);	
+				if (bot.COMMANDS[cmdName] && !bot.COMMANDS[cmdName].lock) {
+					bot.COMMANDS[cmdName].main(bot, message);	
 				} else {
 
 					//tell user that command doesn't exist
