@@ -4,7 +4,8 @@ const clearModule = require("clear-module");
 module.exports = {
 	main: function(bot, message) {
 		try {
-			//number of commands in use
+
+			//number of commands in our commands object
 			var obj_length = Object.keys(bot.COMMANDS).length;
 
 			//check if commands already exist in the require cache

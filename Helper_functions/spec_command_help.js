@@ -1,38 +1,39 @@
 //to be used in conjunction with ../Commands/help.js
-//Input: a potential filename of a command file
+//Input: bot object, message object, potential filename to compare list to
 //Output: prints the help message to the discord channel where
 //		a user used the c!help command
 
-const fs = require("fs");
 const Discord = require("Discord.js");
-const split_args = require( __dirname + "/split_args.js");
-var files = fs.readdirSync(__dirname + "/../Commands/");
 
-function spec_command_help(message) {
+function spec_command_help(bot, message, arg) {
 	var found = false; //flag for when an existing file is found
 	
 	//string to compare our list of filenames to
-	var new_message = split_args(message, 1).toLocaleLowerCase();
 
-	//parse through each filename, if a match is found, change our "found" to true
-	for (i = 0; i < files.length; i++) {
-		var element_name = files[i].slice(0, -3);
-		if (element_name == new_message) {
+	//name & number of commands in our commands object
+	var command_list = Object.keys(bot.COMMANDS);
+	var obj_length = command_list.length;
+
+	var it = 0; //while loop iterator
+	while (!found && it < obj_length) {
+ 		if (command_list[it] == arg) {
 			found = true;
-			i = files.length;
+		} else {
+			it++;
 		}
 	}
 
 	//if "found" is true, start constructing our message embed and then send it
 	if (found) {
-		var temp = require(__dirname + "/../Commands/" + new_message);
+		var help_string =  bot.COMMANDS[command_list[it]].usage_help;
 		var embed = new Discord.MessageEmbed()
 			.setColor(9662683)
-			.setAuthor("c!" + element_name + " command usage:")
-			.setDescription(temp.usage_help);
+			.setAuthor("c!" + command_list[it] + " command usage:")
+			.setDescription(help_string);
 
 		message.channel.send({embed});
 	} else {
+
 		//tell user if the command doesnt exist
 		message.channel.send("That command does not exist.");
 	}

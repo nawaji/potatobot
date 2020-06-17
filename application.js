@@ -1,5 +1,5 @@
-const botToken = require(__dirname + "/key.js"); //import our bot token from a separate file
-const token = botToken.discord; //carries our bot token
+var botToken = require(__dirname + "/key.js"); //import our bot token from a separate file
+var token = botToken.discord; //carries our bot token
 const Discord = require("discord.js");
 const bot = new Discord.Client(); //new discord instance
 
