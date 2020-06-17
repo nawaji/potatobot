@@ -18,5 +18,6 @@ module.exports = {
 	},
 
 	help: "Displays server info",
+	usage_help: "c!server",
 	hide: false
 }

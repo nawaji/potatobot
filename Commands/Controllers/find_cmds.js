@@ -10,6 +10,11 @@ module.exports = {
 				return;
 			}
 
+			//don't respond in direct message channels
+			if (!message.guild) {
+				return;
+			}
+
 			//if our command prefix is found...
 			if (String(message).startsWith(bot.PREFIX)) {
 				var cmdName = String(message).split(" ")[0].substr(2);
