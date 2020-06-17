@@ -4,8 +4,8 @@ const Discord = require("discord.js");
 const bot = new Discord.Client(); //new discord instance
 
 //command controllers
-const command_loader = require(__dirname + "/Commands/Controllers/loadcommands");
-const command_finder = require(__dirname + "/Commands/Controllers/findcommands");
+const command_loader = require(__dirname + "/Commands/Controllers/load_cmds");
+const command_finder = require(__dirname + "/Commands/Controllers/find_cmds");
 
 bot.PREFIX = "c!"; //chat prefix to be followed by chat command (i.e c!help)
 bot.COMMANDS = {}; //commands object that holds each command as keys

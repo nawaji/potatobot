@@ -1,4 +1,4 @@
-//findCommands function
+//find_cmds function
 //NOTE: this function is unaffected by the loadcommands file, so any changes
 //to this file will need a bot restart to take effect.
 module.exports = {

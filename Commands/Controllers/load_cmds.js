@@ -5,19 +5,6 @@ module.exports = {
 	main: function(bot, message) {
 		try {
 
-			//number of commands in our commands object
-			var obj_length = Object.keys(bot.COMMANDS).length;
-
-			//check if commands already exist in the require cache
-			if (obj_length != 0) {
-				console.log("loadcommands was called... loading files again")
-
-				//clear each command from the cache
-				for (i = 0; i < obj_length; i++) {
-					clearModule("../" + Object.keys(bot.COMMANDS)[i]);
-				}
-			}
-
 			var files = fs.readdirSync(__dirname + "/../");
 
 			//parse through each element
@@ -36,8 +23,8 @@ module.exports = {
 		}
 	},
 
-	help: "Re/loads available commands.",
-	usage_help: "c!loadCommands",
+	help: "Loads available commands.",
+	usage_help: "c!load_cmd",
 	hide: true,
 	lock: true
 }
