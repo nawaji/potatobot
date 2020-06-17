@@ -7,9 +7,8 @@ const bot = new Discord.Client(); //new discord instance
 const command_loader = require(__dirname + "/Commands/Controllers/loadcommands");
 const command_finder = require(__dirname + "/Commands/Controllers/findcommands");
 
-bot.PREFIX = "c!";
-bot.OWNER = 141666943974375425;
-bot.COMMANDS = {};
+bot.PREFIX = "c!"; //chat prefix to be followed by chat command (i.e c!help)
+bot.COMMANDS = {}; //commands object that holds each command as keys
 
 //print to console once it's logged in
 bot.on("ready", () => {

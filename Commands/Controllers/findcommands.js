@@ -15,13 +15,7 @@ module.exports = {
 				var cmdName = String(message).split(" ")[0].substr(2);
 
 				cmdName = cmdName.toLocaleLowerCase(); //lowercase
-
-				//if person who initiated the command is the owner
-				if (bot.COMMANDS[cmdName] && message.author.id == bot.OWNER) {
-					bot.COMMANDS[cmdName].main(bot, message);
-					return;
-				}
-
+				
 				//if the command name exists and that command is unlocked
 				//then execute that command
 				if (bot.COMMANDS[cmdName] && !bot.COMMANDS[cmdName].lock) {
