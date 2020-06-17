@@ -8,23 +8,23 @@ module.exports = {
 			var obj_length = Object.keys(bot.COMMANDS).length;
 
 			//check if commands already exist in the require cache
-			if (bot.COMMANDS) {
+			if (obj_length != 0) {
 				console.log("loadcommands was called... loading files again")
-				
+
 				//clear each command from the cache
 				for (i = 0; i < obj_length; i++) {
-					clearModule(__dirname + "/" + Object.keys(bot.COMMANDS)[i]);
+					clearModule("../" + Object.keys(bot.COMMANDS)[i]);
 				}
 			}
 
-			var files = fs.readdirSync(__dirname);
+			var files = fs.readdirSync(__dirname + "/../");
 
 			//parse through each element
 			files.forEach(element => {
 				//if the file ends with .js, require it, otherwise don't
 				if (element.endsWith(".js")) {
 					bot.COMMANDS[element.slice(0, -3)] 
-						= require(__dirname + "/" + element);
+						= require("../" + element);
 					console.log(element + " loaded.");
 				}
 			});

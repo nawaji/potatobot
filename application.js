@@ -3,12 +3,13 @@ const token = botToken.discord; //carries our bot token
 const Discord = require("discord.js");
 const bot = new Discord.Client(); //new discord instance
 
-const loadCommands = require(__dirname + "/Commands/loadcommands");
-const findCommands = require(__dirname + "/Commands/findcommands");
+//command controllers
+const command_loader = require(__dirname + "/Commands/Controllers/loadcommands");
+const command_finder = require(__dirname + "/Commands/Controllers/findcommands");
 
-bot.PREFIX = "c!"; //prefix followed by command name to use command
-bot.OWNER = -1; //the bot owner's user ID (this is used for reloading commands)
-bot.COMMANDS = {}; //command object that holds all the commands
+bot.PREFIX = "c!";
+bot.OWNER = 141666943974375425;
+bot.COMMANDS = {};
 
 //print to console once it's logged in
 bot.on("ready", () => {
@@ -19,10 +20,10 @@ bot.on("ready", () => {
 })
 
 //load commands for the first time to set everything up
-loadCommands.main(bot); 
+command_loader.main(bot); 
 
 //command handler
-findCommands.main(bot);
+command_finder.main(bot);
 
 //log in
 bot.login(token);
