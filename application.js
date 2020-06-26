@@ -1,3 +1,5 @@
+"use strict";
+
 var botToken = require(__dirname + "/key.js"); //import our bot token from a separate file
 var token = botToken.discord; //carries our bot token
 const Discord = require("discord.js");
@@ -16,10 +18,10 @@ bot.on("ready", () => {
 
 	bot.user.setActivity(); //clear activity first and then set it again
 	bot.user.setActivity("Kaguya", { type: "WATCHING"});
-})
+}) 
 
 //load commands for the first time to set everything up
-command_loader.main(bot); 
+command_loader.main(bot);
 
 //command handler
 command_finder.main(bot);

@@ -17,6 +17,12 @@ function split_args(str, index) {
 		return "";
 	}
 
+	//if the specified index is blank, return empty string
+	if (temp[index] == "") {
+		return "";
+
+	}
+
 	//return the specified string
 	return temp[index];
 }
