@@ -1,7 +1,8 @@
-//splits the message using " "s and returns the element specified
-//Input: string/object "str", integer "index"
-//Output: blank if blank string, otherwise send the string
-
+/*************************************************************************
+ * Desc: splits the message using " "s and returns the element specified
+ * Input: string/object "str", integer "index"
+ * Output: blank if blank string, otherwise send the string
+*************************************************************************/
 function split_args(str, index) {
 	//return if blank string
 	if (str == "") {

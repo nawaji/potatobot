@@ -1,8 +1,9 @@
-//to be used in conjunction with ../Commands/help.js
-//Input: bot object, message object, potential filename to compare list to
-//Output: prints the help message to the discord channel where
-//		a user used the c!help command
-
+/*****************************************************************************
+ * to be used in conjunction with ../Commands/help.js
+ * Input: bot object, message object, potential filename to compare list to
+ * Output: prints the help message to the discord channel where
+ *		a user used the c!help command
+*****************************************************************************/
 const Discord = require("Discord.js");
 
 function spec_command_help(bot, message, arg) {
